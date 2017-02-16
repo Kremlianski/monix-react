@@ -1,0 +1,6 @@
+target/
+.idea/
+project/project/
+project/target/
+root/
+src/main/main.iml
