@@ -1,9 +1,11 @@
 package example
 
 import japgolly.scalajs.react._
+import japgolly.scalajs.react.component.Scala.Unmounted
 import japgolly.scalajs.react.vdom.html_<^._
 import monix.execution.Cancelable
 import monix.execution.Scheduler.Implicits.global
+import org.scalajs.dom.html.{Button, Div}
 
 case class CounterProps(d: Dispatcher[CounterState])
 
@@ -27,7 +29,7 @@ object Counter {
 
     }
 
-    def render(p: ButtonProps) =
+    def render(p: ButtonProps): VdomTagOf[Button] =
       <.button(^.onClick --> click, ^.className := "round", p.increment match {
         case true => "+"
         case _ => "-"
@@ -49,7 +51,7 @@ object Counter {
 
     }
 
-    def render =
+    def render: VdomTagOf[Button] =
       <.button(^.onClick --> click, "clear")
   }
 
@@ -61,7 +63,7 @@ object Counter {
   class Count0Backend($: BackendScope[CounterProps, Int]) {
     var end: Option[Cancelable] = None
 
-    def render(s: Int) =
+    def render(s: Int): VdomTagOf[Div] =
       <.div(^.className := "red", s)
   }
 
@@ -85,7 +87,7 @@ object Counter {
   class CountBackend($: BackendScope[CounterProps, Int]) {
     var end: Option[Cancelable] = None
 
-    def render(s: Int) =
+    def render(s: Int): VdomTagOf[Div] =
       <.div(^.className := "green", s)
   }
 
@@ -117,7 +119,7 @@ object Counter {
   class Count1Backend($: BackendScope[CounterProps, Int]) {
     var end: Option[Cancelable] = None
 
-    def render(s: Int) =
+    def render(s: Int): VdomTagOf[Div] =
       <.div(^.className := "blue", s)
   }
 
@@ -163,7 +165,7 @@ object Counter {
       )
     }.build
 
-  def apply(props: CounterProps) = Counter(props)
+  def apply(props: CounterProps): Unmounted[CounterProps, Unit, Unit] = Counter(props)
 }
 
 
