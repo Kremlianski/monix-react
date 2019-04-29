@@ -20,7 +20,7 @@ object ScalaJSExample {
     val state_0 = CounterState(0, 0)
     val dispatcher = new Dispatcher[CounterState](state_0)
 
-    ReactDOM.render(Counter(CounterProps(dispatcher)), dom.document.getElementById("target"))
+    Counter(CounterProps(dispatcher)).renderIntoDOM(dom.document.getElementById("target"))
 
 
   }

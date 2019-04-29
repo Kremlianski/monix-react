@@ -1,8 +1,7 @@
 package example
 
 import japgolly.scalajs.react._
-import japgolly.scalajs.react.vdom.prefix_<^._
-import japgolly.scalajs.react.ReactComponentB
+import japgolly.scalajs.react.vdom.html_<^._
 import monix.execution.Cancelable
 import monix.execution.Scheduler.Implicits.global
 
@@ -35,7 +34,7 @@ object Counter {
       })
   }
 
-  private val Button = ReactComponentB[ButtonProps]("Button")
+  private val Button =  ScalaComponent.builder[ButtonProps]("Button")
     .renderBackend[ButtonBackend]
     .build
 
@@ -54,7 +53,7 @@ object Counter {
       <.button(^.onClick --> click, "clear")
   }
 
-  private val Clear = ReactComponentB[CounterProps]("Clear")
+  private val Clear =  ScalaComponent.builder[CounterProps]("Clear")
     .renderBackend[ClearBackend]
     .build
 
@@ -67,7 +66,7 @@ object Counter {
   }
 
 
-  private val Count0 = ReactComponentB[CounterProps]("Count")
+  private val Count0 =  ScalaComponent.builder[CounterProps]("Count")
     .initialState(0)
     .renderBackend[Count0Backend]
     .componentDidMount(scope =>
@@ -91,7 +90,7 @@ object Counter {
   }
 
 
-  private val Count = ReactComponentB[CounterProps]("Count")
+  private val Count =  ScalaComponent.builder[CounterProps]("Count")
     .initialState(0)
     .renderBackend[CountBackend]
     .componentDidMount(scope =>
@@ -123,7 +122,7 @@ object Counter {
   }
 
 
-  private val Count1 = ReactComponentB[CounterProps]("Count")
+  private val Count1 =  ScalaComponent.builder[CounterProps]("Count")
     .initialState(0)
     .renderBackend[Count1Backend]
     .componentDidMount(scope =>
@@ -145,7 +144,7 @@ object Counter {
       Callback(scope.backend.end.map(_.cancel)))
     .build
 
-  private val Counter = ReactComponentB[CounterProps]("Counter")
+  private val Counter =  ScalaComponent.builder[CounterProps]("Counter")
     .render_P { prop =>
       <.div(^.id := "counter-container",
         <.div(^.className := "counts",
