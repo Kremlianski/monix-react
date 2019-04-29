@@ -78,7 +78,7 @@ object Counter {
       }
     )
     .componentWillUnmount(scope =>
-      Callback(scope.backend.end.map(_.cancel)))
+      Callback(scope.backend.end.foreach(_.cancel)))
     .build
 
 
@@ -110,7 +110,7 @@ object Counter {
       }
     )
     .componentWillUnmount(scope =>
-      Callback(scope.backend.end.map(_.cancel)))
+      Callback(scope.backend.end.foreach(_.cancel)))
     .build
 
 
@@ -141,7 +141,7 @@ object Counter {
       }
     )
     .componentWillUnmount(scope =>
-      Callback(scope.backend.end.map(_.cancel)))
+      Callback(scope.backend.end.foreach(_.cancel)))
     .build
 
   private val Counter =  ScalaComponent.builder[CounterProps]("Counter")

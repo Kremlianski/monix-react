@@ -17,7 +17,7 @@ class Dispatcher [State](val initialState: State){
 
   def dispatch(f:State => State): Unit = dispatcher.onNext(f)
 
-  def observer(f:State => Unit)= new Observer[State] {
+  def observer(f:State => Unit): Observer[State] = new Observer[State] {
     def onNext(s: State): Future[Ack] = {
 
       f(s)
