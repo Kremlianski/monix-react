@@ -1,6 +1,5 @@
 package example
 
-import japgolly.scalajs.react._
 import org.scalajs.dom
 
 import scala.scalajs.js.annotation.JSExportTopLevel
